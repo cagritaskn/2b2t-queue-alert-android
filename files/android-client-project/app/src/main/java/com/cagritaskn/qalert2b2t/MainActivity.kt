@@ -3,7 +3,8 @@ package com.cagritaskn.qalert2b2t
 import android.annotation.SuppressLint import android.app.* import android.content.Context import android.content.Intent import android.content.pm.PackageManager import android.graphics.Color
 import android.graphics.Typeface
 import android.graphics.drawable.ColorDrawable
-import android.media.RingtoneManager import android.os.Build import android.os.Bundle import android.os.Handler import android.os.Looper import android.util.Log import android.view.KeyEvent import android.view.View import android.view.inputmethod.InputMethodManager import android.view.animation.AlphaAnimation import android.view.inputmethod.EditorInfo import android.widget.* import androidx.appcompat.app.AppCompatActivity import androidx.core.app.NotificationCompat import androidx.core.app.NotificationManagerCompat import androidx.core.content.ContextCompat import org.json.JSONObject import java.io.BufferedReader import java.io.InputStreamReader import java.net.HttpURLConnection import java.net.URL import org.json.JSONException
+import android.media.RingtoneManager import android.os.Build import android.os.Bundle import android.os.Handler import android.os.Looper
+import android.util.Log import android.view.KeyEvent import android.view.View import android.view.inputmethod.InputMethodManager import android.view.animation.AlphaAnimation import android.view.inputmethod.EditorInfo import android.widget.* import androidx.appcompat.app.AppCompatActivity import androidx.core.app.NotificationCompat import androidx.core.app.NotificationManagerCompat import androidx.core.content.ContextCompat import org.json.JSONObject import java.io.BufferedReader import java.io.InputStreamReader import java.net.HttpURLConnection import java.net.URL import org.json.JSONException
 import android.text.method.LinkMovementMethod
 import android.text.SpannableString
 import android.text.util.Linkify
@@ -47,6 +48,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val serviceIntent = Intent(this, ForegroundService::class.java)
+        ContextCompat.startForegroundService(this, serviceIntent)
 
         ipPart1 = findViewById(R.id.ip_part1)
         ipPart2 = findViewById(R.id.ip_part2)
@@ -155,6 +159,7 @@ class MainActivity : AppCompatActivity() {
             Log.e(TAG, "Error accessing NumberPicker children", e)
         }
     }
+
 
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -485,4 +490,4 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    }
+}

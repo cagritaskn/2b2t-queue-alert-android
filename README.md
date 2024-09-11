@@ -13,7 +13,7 @@ Then install the APK file on your Android phone.
 
 ## Initialize
 Make sure that your Android phone and your PC are connected to the same network connection.
-To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your PC and enter the IP address provided by the PC server into the Android app's **(Android-Client-2B2TQueueAlert.apk)** IP address input field. Be sure to grant notification permissions for the Android app to ensure the app functions correctly.
+To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your PC and enter the IP address provided by the PC server into the Android app's **(Android-Client-2B2TQueueAlert.apk)** IP address input field. Be sure to grant notification permissions for the Android app to ensure the app functions correctly. And if your Android phone has battery optimization restrictions please turn it off for the client app. Get more info about disabling battery optimization [here](https://help.cardata.co/article/175-how-to-turn-off-your-androids-battery-optimizer)
 
 # How does it work
 The PC application reads data from Minecraft's latest.log file, uploads this data to a local IP address, and allows the Android phone, which is connected to the same network, to access and display this data. The Android phone then sends notifications based on the data received from the PC.
