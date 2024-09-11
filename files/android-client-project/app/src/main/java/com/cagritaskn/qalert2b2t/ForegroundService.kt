@@ -26,7 +26,7 @@ class ForegroundService : Service() {
 
         val notification: Notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Foreground Service")
-            .setContentText("Uygulama arka planda çalışıyor ve bildirimler gönderebilir.")
+            .setContentText("The 2B2T Queue Alert app is running in the background to receive queue data and send notifications.")
             .setSmallIcon(R.drawable.notification_icon)
             .build()
 
