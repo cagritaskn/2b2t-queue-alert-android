@@ -171,7 +171,7 @@ class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val name = "Server Notifications"
             val descriptionText = "Notifications for server status and restarts"
-            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(NOTIFICATION_CHANNEL_ID, name, importance).apply {
                 description = descriptionText
             }
