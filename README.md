@@ -51,5 +51,5 @@ Discord: "kegrisko." (The ID has a dot at the end)
 # Dupe
 This project works well with the cactus dupe. (Planning on adding the popbob bed dupe later.)
 
-#License
+# License
 This code is licensed under the GNU General Public License v3. **You can only use this code in open-source clients that you release under the same license! Using it in closed-source/proprietary clients is not allowed.**
