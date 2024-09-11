@@ -35,7 +35,7 @@ You can build the Android app yourself by cloning the repository to your PC and 
 If you face any issues or errors you can contact me at:
 Discord: "kegrisko." (The ID has a dot at the end)
 
-# Screenshots from the PC server and Android app
+# Screenshots from the PC server and the Android app
 
 <img src="files/server-screenshot.png" width="256" >
 
