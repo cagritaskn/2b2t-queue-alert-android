@@ -1,4 +1,4 @@
-![Logo](main/files/logo.png)
+![Logo](files/logo.png)
 
 # About
 This app tracks and notifies you of your 2B2T queue position on your Android phone.
