@@ -158,7 +158,7 @@
             android:id="@+id/notify_on_restart_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Notify on Server Restart"
+            android:text="Notify on Restart"
             android:gravity="center_horizontal"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
@@ -170,9 +170,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/notify_on_restart_text_view"
             android:gravity="center"
-            android:minWidth="100dp"
+            android:minWidth="80dp"
             android:minHeight="30dp" />
-
 
     </RelativeLayout>
 
@@ -183,7 +182,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="335dp"
         android:background="@drawable/button_background"
-        android:padding="8dp">
+        android:padding="8dp"
+        tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/notification_minimum_count_text_view"
@@ -215,7 +215,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="496dp"
         android:background="@drawable/button_background"
-        android:padding="8dp">
+        android:padding="8dp"
+        tools:ignore="NotSibling">
 
         <TextView
             android:id="@+id/numeric_value_text_view_static"

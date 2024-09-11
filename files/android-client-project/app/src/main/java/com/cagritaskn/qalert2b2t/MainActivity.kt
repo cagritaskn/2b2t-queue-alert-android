@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity() {
     private var notificationSent = false
 
     private var queueAlertLastSentTime = 0L
-    private val QUEUE_ALERT_INTERVAL_MS = 60000L // 60 seconds in milliseconds
-    private val INITIAL_DELAY_MS = 60000L // 60 seconds in milliseconds
+    private val QUEUE_ALERT_INTERVAL_MS = 30000L // 60 seconds in milliseconds
+    private val INITIAL_DELAY_MS = 30000L // 60 seconds in milliseconds
 
     companion object {
         private const val TAG = "MainActivity"
@@ -129,13 +129,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupNumberPicker() {
-        val values = arrayOf("5", "10", "15", "20", "25", "30", "35", "40", "45", "50")
+        val values = arrayOf("Queue Notifications Off", "5", "10", "15", "20", "25", "30", "35", "40", "45", "50", "100")
+
         notificationMinimumCountPicker.minValue = 0
         notificationMinimumCountPicker.maxValue = values.size - 1
         notificationMinimumCountPicker.displayedValues = values
         notificationMinimumCountPicker.wrapSelectorWheel = true
+
         notificationMinimumCountPicker.setOnValueChangedListener { _, _, newValue ->
-            notificationMinimumCount = values[newValue].toInt()
+            notificationMinimumCount = if (newValue == 0) {
+                0 // "Queue Notifications Off" seçildiğinde değeri 0 olarak ayarla
+            } else {
+                values[newValue].toInt()
+            }
         }
 
         setNumberPickerTextColor(notificationMinimumCountPicker, Color.WHITE)
@@ -310,7 +316,7 @@ class MainActivity : AppCompatActivity() {
                     }
                 }
 
-                if (numericValue != null && numericValue in 5..1000 && numericValue <= notificationMinimumCount) {
+                if (numericValue != null && numericValue in 1..1000 && numericValue <= notificationMinimumCount) {
                     val currentTime = System.currentTimeMillis()
                     if (currentTime - queueAlertLastSentTime >= QUEUE_ALERT_INTERVAL_MS) {
                         sendNotification(
