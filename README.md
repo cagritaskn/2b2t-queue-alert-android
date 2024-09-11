@@ -1,5 +1,4 @@
-<center><img src="files/logo.png" width="128" height="128"></center>
-
+<p align="center"><img src="files/logo.png" width="128" height="128"></p>
 # About
 This app tracks and notifies you of your 2B2T queue position on your Android phone.
 
