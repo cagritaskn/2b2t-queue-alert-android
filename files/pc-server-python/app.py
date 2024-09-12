@@ -15,6 +15,7 @@ import datetime
 import webbrowser
 import shutil
 import winreg
+import win32com.client  # Added for creating shortcuts
 
 app = Flask(__name__)
 selected_file = None
@@ -290,13 +291,56 @@ def copy_exe_to_program_files():
     except Exception as e:
         print(f"Error copying executable to program files: {e}")
 
+# Function to create shortcuts
+def create_shortcuts():
+    shortcut_name = "2B2T Queue Alert Server"
+    target_path = exe_path
+    desktop = os.path.join(os.path.join(os.environ['USERPROFILE']), 'Desktop')
+    start_menu = os.path.join(os.environ['APPDATA'], 'Microsoft', 'Windows', 'Start Menu', 'Programs')
+
+    def create_shortcut(path, target, name):
+        shell = win32com.client.Dispatch("WScript.Shell")
+        shortcut = shell.CreateShortCut(os.path.join(path, f"{name}.lnk"))
+        shortcut.TargetPath = target
+        shortcut.WorkingDirectory = os.path.dirname(target)
+        shortcut.save()
+
+    def delete_shortcut(path, name):
+        try:
+            shortcut_path = os.path.join(path, f"{name}.lnk")
+            if os.path.exists(shortcut_path):
+                os.remove(shortcut_path)
+                print(f"Deleted shortcut: {shortcut_path}")
+        except Exception as e:
+            print(f"Error deleting shortcut: {e}")
+
+    response = messagebox.askyesno(
+        "Create Shortcuts",
+        "Do you want to create Start Menu and Desktop shortcuts? Press No if you want to delete the existing ones."
+    )
+    
+    if response:
+        try:
+            create_shortcut(desktop, target_path, shortcut_name)
+            create_shortcut(start_menu, target_path, shortcut_name)
+            messagebox.showinfo("Shortcuts Created", "Start Menu and Desktop shortcuts have been created.")
+        except Exception as e:
+            print(f"Error creating shortcuts: {e}")
+    else:
+        try:
+            delete_shortcut(desktop, shortcut_name)
+            delete_shortcut(start_menu, shortcut_name)
+            messagebox.showinfo("Shortcuts Deleted", "Existing Start Menu and Desktop shortcuts have been deleted.")
+        except Exception as e:
+            print(f"Error deleting shortcuts: {e}")
+
 def main():
     global file_status_label, button, status_label, root, quit_button, help_button, hide_button, checkbox_var, checkbox
 
     try:
         root = ThemedTk(theme="breeze")
         root.title("2B2T Queue Alert")
-        root.geometry("400x320")
+        root.geometry("400x380")  # Increased height to accommodate new button
         root.protocol("WM_DELETE_WINDOW", on_closing)
         root.resizable(False, False)
         
@@ -312,7 +356,7 @@ def main():
                 background="#444444",  # Arka plan rengi
                 foreground="white")    # Metin rengi
 
-        canvas = tk.Canvas(root, width=400, height=320, bg="#444444")
+        canvas = tk.Canvas(root, width=400, height=380, bg="#444444")  # Adjusted height for new button
         canvas.pack()
 
         file_status_label = ttk.Label(root, text="Checking...", background="#444444", font=("Roboto", 10, "bold"))
@@ -343,7 +387,11 @@ def main():
         # Checkbox for "Run on Windows Startup"
         checkbox_var = tk.IntVar()
         checkbox = ttk.Checkbutton(root, text="Run on Windows Startup", style="TCheckbutton", variable=checkbox_var, command=toggle_startup_checkbox)
-        canvas.create_window(200, 295, window=checkbox)
+        canvas.create_window(200, 300, window=checkbox)
+
+        # Button for creating shortcuts
+        shortcuts_button = ttk.Button(root, text="Create Start Menu & Desktop Shortcuts", command=lambda: create_shortcuts())
+        canvas.create_window(200, 340, window=shortcuts_button)  # Positioned below other buttons
 
         # Set checkbox state based on startup.txt
         startup_value = handle_startup_file()
