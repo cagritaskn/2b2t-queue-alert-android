@@ -12,7 +12,7 @@ Try this first:
 2. Tap on "Applications" or "Apps"
 3. Tap on "2B2T Queue Alert" app
 4. Tap on "Battery"
-5. Tap on "Do not restrict" or "Not restricted"
+5. Tap on "Do not restrict" or "Not restricted" or "Unrestricted"
 
 Or search for "battery optimization" in your smartphone's settings and then find the 2B2T Queue Alert app there then disable it.
 
