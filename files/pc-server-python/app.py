@@ -22,8 +22,8 @@ server_running = False
 default_file = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', '.minecraft', 'logs', 'latest.log')
 flask_server = None
 tray_icon = None
-startup_txt_path = os.path.join(os.getenv('TEMP'), '2BQA', 'startup.txt')
-exe_path = os.path.join(os.getenv('TEMP'), '2BQA', '2b2tqueueserver.exe')
+startup_txt_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', 'startup.txt')
+exe_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', '2b2tqueueserver.exe')
 checkbox_var = None
 
 def get_resource_path(relative_path):
@@ -267,8 +267,8 @@ def toggle_startup_checkbox():
         handle_windows_startup_registry(False)
 
 # Copy the exe for user specified startup with Windows
-def copy_exe_to_temp():
-    exe_path = os.path.join(os.getenv('TEMP'), '2BQA', '2b2tqueueserver.exe')
+def copy_exe_to_program_files():
+    exe_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', '2b2tqueueserver.exe')
     source_path = sys.executable  # Bu, çalışmakta olan Python betiğinizin yoludur.
     
     try:
@@ -277,9 +277,9 @@ def copy_exe_to_temp():
             shutil.copy(source_path, exe_path)
             print(f"Copied executable to {exe_path}")  # Debugging
         else:
-            print("Executable already exists in temp folder")  # Debugging
+            print("Executable already exists in program files folder")  # Debugging
     except Exception as e:
-        print(f"Error copying executable to temp: {e}")
+        print(f"Error copying executable to program files: {e}")
 
 def main():
     global file_status_label, button, status_label, root, quit_button, help_button, hide_button, checkbox_var, checkbox
@@ -294,7 +294,7 @@ def main():
         icon_image_path = get_resource_path('icon.ico')
         root.iconbitmap(icon_image_path)
         
-        copy_exe_to_temp()
+        copy_exe_to_program_files()
 
         style = ttk.Style()
         style.configure("TButton", font=("Roboto", 10, "bold"), padding=5, background="#444444", foreground="black")
@@ -348,7 +348,7 @@ def main():
         set_default_file()
         log_startup_message()
         toggle_server()
-        copy_exe_to_temp()
+        copy_exe_to_program_files()
         create_tray_icon()
         root.mainloop()
 
