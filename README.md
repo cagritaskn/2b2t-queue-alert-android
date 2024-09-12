@@ -13,10 +13,10 @@ Then install the APK file on your Android phone.
 
 ## Initialize
 Make sure that your Android phone and your PC are connected to the same network connection.
-To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your PC and enter the IP address provided by the PC server into the Android app's **(Android-Client-2B2TQueueAlert.apk)** IP address input field. Be sure to grant notification permissions for the Android app to ensure the app functions correctly. And if your Android phone has battery optimization restrictions please turn it off for the client app. Get more info about disabling battery optimization [here](https://help.cardata.co/article/175-how-to-turn-off-your-androids-battery-optimizer)
+To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your PC and enter the IP address provided by the PC server into the Android app's **(Android-Client-2B2TQueueAlert.apk)** IP address input field. Be sure to grant notification permissions for the Android app to ensure the app functions correctly.
 
-> [!NOTE]
-> Some Android operating systems has a feature called battery optimization which may hibernate the app after some time. Be sure to disable battery optimization for this app if exists. Here is instructions of disabling the battery optimization for any app: **[How to disable battery optimization for applications](https://support.convoy.com/en/articles/722176)**. Some Android phones have this setting in the application page. If you couldn't do it by following this manual then try going into `Settings>Applications>2B2T Queue Alert>Battery` in this window, choose "Not restriced" (or anything with the same meaning).
+> [!IMPORTANT]
+> Some Android operating systems has a feature called battery optimization which may hibernate the app after some time. Be sure to disable battery optimization for this app if exists. Here is instructions of disabling the battery optimization for any app: **[How to disable battery optimization for applications](https://github.com/cagritaskn/2b2t-queue-alert-android/blob/main/DISABLING_BATTERY_OPTIMIZATION.md)**. Some Android phones have this setting in the application page. If you couldn't do it by following this manual then try going into `Settings>Applications>2B2T Queue Alert>Battery` in this window, choose "Not restriced" (or anything with the same meaning).
 
 # How does it work ?
 The PC application reads data from Minecraft's latest.log file, uploads this data to a local IP address, and allows the Android phone, which is connected to the same network, to access and display this data. The Android phone then sends notifications based on the data received from the PC.
