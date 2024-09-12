@@ -13,6 +13,8 @@ from PIL import Image
 import re
 import datetime
 import webbrowser
+import shutil
+import winreg
 
 app = Flask(__name__)
 selected_file = None
@@ -20,6 +22,9 @@ server_running = False
 default_file = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', '.minecraft', 'logs', 'latest.log')
 flask_server = None
 tray_icon = None
+startup_txt_path = os.path.join(os.getenv('TEMP'), '2BQA', 'startup.txt')
+exe_path = os.path.join(os.getenv('TEMP'), '2BQA', '2b2tqueueserver.exe')
+checkbox_var = None
 
 def get_resource_path(relative_path):
     try:
@@ -55,14 +60,6 @@ def read_last_numeric_line(file_path):
     except Exception as e:
         print(f"Error reading file: {e}")
     return "No numeric value found", False
-
-@app.route('/')
-def index():
-    return "Server is running! Use /get-data to get the data."
-
-@app.route('/favicon.ico')
-def favicon():
-    return "", 204
 
 @app.route('/get-data', methods=['GET'])
 def get_data():
@@ -232,24 +229,81 @@ def show_help():
     if response:
         webbrowser.open("https://github.com/cagritaskn/2b2t-queue-alert-android")
 
+# Function to handle reading and writing to the startup.txt file
+def handle_startup_file(write_value=None):
+    os.makedirs(os.path.dirname(startup_txt_path), exist_ok=True)
+    if write_value is not None:
+        with open(startup_txt_path, 'w') as f:
+            f.write(write_value)
+    else:
+        if not os.path.exists(startup_txt_path):
+            handle_startup_file("false")
+        with open(startup_txt_path, 'r') as f:
+            return f.read().strip()
+    return "false"
+
+# Add registry key for the user specified startup
+def handle_windows_startup_registry(add_to_startup):
+    key = r"SOFTWARE\Microsoft\Windows\CurrentVersion\Run"
+    if add_to_startup:
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key, 0, winreg.KEY_SET_VALUE) as reg_key:
+                winreg.SetValueEx(reg_key, "2B2TQueueServer", 0, winreg.REG_SZ, exe_path)
+        except Exception as e:
+            print(f"Error adding to startup: {e}")
+    else:
+        try:
+            with winreg.OpenKey(winreg.HKEY_CURRENT_USER, key, 0, winreg.KEY_SET_VALUE) as reg_key:
+                winreg.DeleteValue(reg_key, "2B2TQueueServer")
+        except Exception as e:
+            print(f"Error removing from startup: {e}")
+
+def toggle_startup_checkbox():
+    if checkbox_var.get() == 1:
+        handle_startup_file("true")
+        handle_windows_startup_registry(True)
+    else:
+        handle_startup_file("false")
+        handle_windows_startup_registry(False)
+
+# Copy the exe for user specified startup with Windows
+def copy_exe_to_temp():
+    exe_path = os.path.join(os.getenv('TEMP'), '2BQA', '2b2tqueueserver.exe')
+    source_path = sys.executable  # Bu, çalışmakta olan Python betiğinizin yoludur.
+    
+    try:
+        os.makedirs(os.path.dirname(exe_path), exist_ok=True)
+        if not os.path.exists(exe_path):
+            shutil.copy(source_path, exe_path)
+            print(f"Copied executable to {exe_path}")  # Debugging
+        else:
+            print("Executable already exists in temp folder")  # Debugging
+    except Exception as e:
+        print(f"Error copying executable to temp: {e}")
+
 def main():
-    global file_status_label, button, status_label, root, quit_button, help_button, hide_button
+    global file_status_label, button, status_label, root, quit_button, help_button, hide_button, checkbox_var, checkbox
 
     try:
         root = ThemedTk(theme="breeze")
         root.title("2B2T Queue Alert")
-        root.geometry("400x300")
+        root.geometry("400x320")
         root.protocol("WM_DELETE_WINDOW", on_closing)
         root.resizable(False, False)
-
+        
         icon_image_path = get_resource_path('icon.ico')
         root.iconbitmap(icon_image_path)
+        
+        copy_exe_to_temp()
 
         style = ttk.Style()
         style.configure("TButton", font=("Roboto", 10, "bold"), padding=5, background="#444444", foreground="black")
         style.configure("TLabel", font=("Roboto", 10, "bold"), background="#444444", foreground="white")
+        style.configure("TCheckbutton",
+                background="#444444",  # Arka plan rengi
+                foreground="white")    # Metin rengi
 
-        canvas = tk.Canvas(root, width=400, height=300, bg="#444444")
+        canvas = tk.Canvas(root, width=400, height=320, bg="#444444")
         canvas.pack()
 
         file_status_label = ttk.Label(root, text="Checking...", background="#444444", font=("Roboto", 10, "bold"))
@@ -271,17 +325,30 @@ def main():
         quit_button = ttk.Button(root, text="Quit", command=on_closing)
         canvas.create_window(200, 260, window=quit_button)
         
-        
         hide_button = ttk.Button(root, text="Minimize to Tray", command=withdraw_window)
         canvas.create_window(200, 180, window=hide_button)  # Positioned above the Quit button
 
         help_button = ttk.Button(root, text="Help and Info", command=show_help)
         canvas.create_window(200, 220, window=help_button)
 
+        # Checkbox for "Run on Windows Startup"
+        checkbox_var = tk.IntVar()
+        checkbox = ttk.Checkbutton(root, text="Run on Windows Startup", style="TCheckbutton", variable=checkbox_var, command=toggle_startup_checkbox)
+        canvas.create_window(200, 295, window=checkbox)
+
+        # Set checkbox state based on startup.txt
+        startup_value = handle_startup_file()
+        if startup_value == "true":
+            checkbox_var.set(1)
+            handle_windows_startup_registry(True)
+        else:
+            checkbox_var.set(0)
+            handle_windows_startup_registry(False)
 
         set_default_file()
         log_startup_message()
         toggle_server()
+        copy_exe_to_temp()
         create_tray_icon()
         root.mainloop()
 

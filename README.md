@@ -21,8 +21,11 @@ To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your 
 # How does it work ?
 The PC application reads data from Minecraft's latest.log file, uploads this data to a local IP address, and allows the Android phone, which is connected to the same network, to access and display this data. The Android phone then sends notifications based on the data received from the PC.
 
-## Does it have viruses or is there any chance of my coordinates getting leaked ?
+## Does it have viruses, is there any chance of my coordinates getting leaked ?
 The source codes of [PC-Server-2B2TQueueAlert.exe](https://github.com/cagritaskn/2b2t-queue-alert-android/releases/download/release/PC-Server-2B2TQueueAlert.exe) executable and [Android-Client-2B2TQueueAlert.apk](https://github.com/cagritaskn/2b2t-queue-alert-android/releases/download/release/Android-Client-2B2TQueueAlert.apk) package are shared in this repository. That means you can see what these apps do if you inspect the codes. If you can understand the Kotlin and Python languages, give it a peek. You can scan for viruses if you want too. It doesn't send any data out of the local network and the processed data only includes the queue lines in the chat. so your coordinates aren't going out of your network. It's clean believe me. I made this project for myself and decided to share it (Too broke to buy the priority queue).
+
+> [!NOTE]
+> A small portion (5 in 74) of antivirus software detects the PC server as a trojan. This is false positive and it's caused by the PC server application copies itself into a folder in order to Run on Windows Startup function to work. It does not copy itself into a directory if you don't choose to make it run on Windows startup.
 
 # Running and building the server on PC with Python
 You can use the python app.py by cloning the repository to your PC, opening a terminal in the directory where the "app.py" is located (files/pc-server-python) and running the command:
