@@ -9,7 +9,7 @@ This app tracks and notifies you of your 2B2T queue position on your Android pho
 To get started, download the following files:
 - [PC-Server-2B2TQueueAlert.exe](https://github.com/cagritaskn/2b2t-queue-alert-android/releases/download/release/PC-Server-2B2TQueueAlert.exe) for your PC.
 - [Android-Client-2B2TQueueAlert.apk](https://github.com/cagritaskn/2b2t-queue-alert-android/releases/download/release/Android-Client-2B2TQueueAlert.apk) for your Android phone.
-Then install the APK file on your Android phone.
+Then install the APK file on your Android phone. The Play Protect might give you a warning telling you "It's recommended to scan this app." since it does not recognise the package name (It needs to be published to Play Store in order to bypass this warning.) you can skip scanning or scan and install it since it **doesn't** have harmful code.
 
 ## Initialize
 Make sure that your Android phone and your PC are connected to the same network connection.
