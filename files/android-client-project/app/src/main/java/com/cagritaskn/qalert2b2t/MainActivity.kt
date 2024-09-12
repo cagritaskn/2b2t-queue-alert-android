@@ -49,6 +49,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        BatteryOptimization(this).checkAndPromptBatteryOptimization()
+
         val serviceIntent = Intent(this, ForegroundService::class.java)
         ContextCompat.startForegroundService(this, serviceIntent)
 
