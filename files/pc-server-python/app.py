@@ -22,8 +22,17 @@ server_running = False
 default_file = os.path.join(os.path.expanduser('~'), 'AppData', 'Roaming', '.minecraft', 'logs', 'latest.log')
 flask_server = None
 tray_icon = None
-startup_txt_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', 'startup.txt')
-exe_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', '2b2tqueueserver.exe')
+
+# Dinamik Program Files yolu
+def get_program_files_path():
+    program_files_path = os.environ.get('PROGRAMFILES') or os.environ.get('PROGRAMFILES(X86)')
+    if not program_files_path:
+        raise EnvironmentError("Program Files directory not found.")
+    return program_files_path
+
+program_files_dir = get_program_files_path()
+startup_txt_path = os.path.join(program_files_dir, '2B2T Queue Alert', 'startup.txt')
+exe_path = os.path.join(program_files_dir, '2B2T Queue Alert', '2b2tqueueserver.exe')
 checkbox_var = None
 
 def get_resource_path(relative_path):
@@ -268,7 +277,7 @@ def toggle_startup_checkbox():
 
 # Copy the exe for user specified startup with Windows
 def copy_exe_to_program_files():
-    exe_path = os.path.join('C:\\Program Files\\2B2T Queue Alert', '2b2tqueueserver.exe')
+    exe_path = os.path.join(program_files_dir, '2B2T Queue Alert', '2b2tqueueserver.exe')
     source_path = sys.executable  # Bu, çalışmakta olan Python betiğinizin yoludur.
     
     try:
