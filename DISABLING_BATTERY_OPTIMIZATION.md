@@ -4,6 +4,18 @@ In order to 2B2T Queue Alert Android app to function correctly, it is important 
 
 Note: Your phone manufacturer may continually update their phone settings. If you find some of the directions below have changed, please refer to your phone manufacturer's help center for more accurate instructions to disable battery optimization.
 
+## General
+
+Try this first:
+
+1. Open the "Settings" of your phone
+2. Tap on "Applications" or "Apps"
+3. Tap on "2B2T Queue Alert" app
+4. Tap on "Battery"
+5. Tap on "Do not restrict" or "Not restricted"
+
+Or search for "battery optimization" in your smartphone's settings and then find the 2B2T Queue Alert app there then disable it.
+
 ## Samsung
 
 Depending on the phone model, go to the smartphone's settings and follow these steps:
