@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var connectButton: Button
     private lateinit var notifyRestartSwitch: Switch
     private lateinit var notificationMinimumCountPicker: NumberPicker
+    private lateinit var estimateTime: EstimateTime
 
 
     private var notifyRestartEnabled = false
@@ -48,6 +49,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        estimateTime = EstimateTime(this)
+        estimateTime.startUpdating()
 
         BatteryOptimization(this).checkAndPromptBatteryOptimization()
 
@@ -477,6 +481,7 @@ class MainActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         stopFetchingData()
+        estimateTime.stopUpdating()
     }
 
     override fun onRequestPermissionsResult(
