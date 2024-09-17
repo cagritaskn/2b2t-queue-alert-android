@@ -1,279 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:fillViewport="true"
     android:background="#2B2B2B">
 
-
-    <ImageView
-        android:id="@+id/logo_image_view"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_alignParentTop="false"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/logo"
-        android:contentDescription="2qabanner"/>
-
-    <TextView
-        android:id="@+id/portstatic"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PORT: 5000"
-        android:textSize="16sp"
-        android:textColor="#C8C8C8"
-        android:layout_marginTop="150dp"
-        android:layout_centerHorizontal="true" />
-
-    <!-- Status TextView -->
-    <TextView
-        android:id="@+id/status_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:textColor="#FFFFFF"
-        android:layout_marginTop="172dp"
-        android:layout_centerHorizontal="true"
-        android:visibility="gone"/>
-
-    <!-- IP Address Text Boxes -->
-    <LinearLayout
-        android:layout_marginTop="95dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_centerHorizontal="true">
-
-        <EditText
-            android:id="@+id/ip_part1"
-            android:layout_width="48dp"
-            android:maxLength="3"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="000"
-            android:inputType="number"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="•"
-            android:textSize="26sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginEnd="4dp"/>
-
-        <EditText
-            android:id="@+id/ip_part2"
-            android:layout_width="48dp"
-            android:maxLength="3"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="000"
-            android:inputType="number"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="•"
-            android:textSize="26sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginEnd="4dp"/>
-
-        <EditText
-            android:id="@+id/ip_part3"
-            android:layout_width="48dp"
-            android:maxLength="3"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="000"
-            android:inputType="number"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="•"
-            android:textSize="26sp"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:layout_marginEnd="4dp"/>
-
-        <EditText
-            android:id="@+id/ip_part4"
-            android:layout_width="48dp"
-            android:maxLength="3"
-            android:layout_height="48dp"
-            android:gravity="center"
-            android:layout_marginEnd="4dp"
-            android:background="@drawable/edit_text_background"
-            android:hint="000"
-            android:inputType="number"
-            android:textColor="#FFFFFF"
-            android:textSize="26sp"
-            android:textStyle="bold"/>
-    </LinearLayout>
-
-    <!-- Bağlan Butonu -->
-    <Button
-        android:id="@+id/connect_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Connect"
-        android:textColor="#FFFFFF"
-        android:textSize="20sp"
-        android:background="@drawable/button_background"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        tools:ignore="NotSibling" />
-
-    <!-- Notification Ayarları -->
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginTop="260dp"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/button_background"
-        android:padding="8dp">
+        android:padding="16dp"
+        android:background="#2B2B2B">
 
-        <TextView
-            android:id="@+id/notify_on_restart_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Notify on Restart"
-            android:gravity="center_horizontal"
-            android:textColor="#FFFFFF"
-            android:textStyle="bold"
-            android:textSize="18sp" />
-
-        <Switch
-            android:id="@+id/notify_restart_switch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/notify_on_restart_text_view"
-            android:gravity="center"
-            android:minWidth="80dp"
-            android:minHeight="30dp" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="180dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/notify_restart_switch"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="335dp"
-        android:background="@drawable/button_background"
-        android:padding="8dp"
-        tools:ignore="NotSibling">
-
-        <TextView
-            android:id="@+id/notification_minimum_count_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/logo_image_view"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="false"
             android:layout_centerHorizontal="true"
-            android:text="Queue Alert Limit"
-            android:textColor="#FFFFFF"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <NumberPicker
-            android:id="@+id/notification_minimum_count_picker"
-            android:theme="@style/AppTheme.Picker"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_below="@id/notification_minimum_count_text_view"
-            android:layout_marginTop="16dp"
-            android:layout_centerHorizontal="true"/>
-    </RelativeLayout>
-
-    <!-- Numeric Value TextView -->
-
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/notification_minimum_count_picker"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="496dp"
-        android:background="@drawable/button_background"
-        android:padding="8dp"
-        tools:ignore="NotSibling">
+            android:src="@drawable/logo"
+            android:contentDescription="2qabanner" />
 
         <TextView
-            android:id="@+id/numeric_value_text_view_static"
+            android:id="@+id/portstatic"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Current Position in Queue:"
+            android:text="PORT: 5000"
             android:textSize="16sp"
-            android:textColor="#FFFFFF"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="4dp"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"/>
+            android:textColor="#C8C8C8"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true" />
 
+        <!-- Status TextView -->
         <TextView
-            android:id="@+id/numeric_value_text_view"
+            android:id="@+id/status_text_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="N/A"
-            android:textSize="32sp"
-            android:layout_centerHorizontal="true"
+            android:text=""
+            android:textSize="16sp"
+            android:textStyle="bold"
             android:textColor="#FFFFFF"
-            android:layout_below="@id/numeric_value_text_view_static" />
+            android:layout_marginTop="172dp"
+            android:layout_centerHorizontal="true"
+            android:visibility="gone" />
 
+        <!-- IP Address Text Boxes -->
+        <LinearLayout
+            android:layout_marginTop="95dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+
+            <EditText
+                android:id="@+id/ip_part1"
+                android:layout_width="48dp"
+                android:maxLength="3"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="000"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="•"
+                android:textSize="26sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/ip_part2"
+                android:layout_width="48dp"
+                android:maxLength="3"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="000"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="•"
+                android:textSize="26sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/ip_part3"
+                android:layout_width="48dp"
+                android:maxLength="3"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="000"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="•"
+                android:textSize="26sp"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:layout_marginEnd="4dp" />
+
+            <EditText
+                android:id="@+id/ip_part4"
+                android:layout_width="48dp"
+                android:maxLength="3"
+                android:layout_height="48dp"
+                android:gravity="center"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/edit_text_background"
+                android:hint="000"
+                android:inputType="number"
+                android:textColor="#FFFFFF"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Bağlan Butonu -->
+        <Button
+            android:id="@+id/connect_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Connect"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:background="@drawable/button_background"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp"
+            tools:ignore="NotSibling" />
+
+        <!-- Notification Ayarları -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginTop="260dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/button_background"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/notify_on_restart_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notify on Restart"
+                android:gravity="center_horizontal"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textSize="18sp" />
+
+            <Switch
+                android:id="@+id/notify_restart_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/notify_on_restart_text_view"
+                android:gravity="center"
+                android:minWidth="80dp"
+                android:minHeight="30dp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notify_restart_switch"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="335dp"
+            android:background="@drawable/button_background"
+            android:padding="8dp"
+            tools:ignore="NotSibling">
+
+            <TextView
+                android:id="@+id/notification_minimum_count_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="Queue Alert Limit"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <NumberPicker
+                android:id="@+id/notification_minimum_count_picker"
+                android:theme="@style/AppTheme.Picker"
+                android:layout_width="wrap_content"
+                android:layout_height="100dp"
+                android:layout_below="@id/notification_minimum_count_text_view"
+                android:layout_marginTop="16dp"
+                android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+
+        <!-- Numeric Value TextView -->
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/notification_minimum_count_picker"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="496dp"
+            android:background="@drawable/button_background"
+            android:padding="8dp"
+            tools:ignore="NotSibling">
+
+            <TextView
+                android:id="@+id/numeric_value_text_view_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current Position in Queue:"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="4dp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/numeric_value_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N/A"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true"
+                android:textColor="#FFFFFF"
+                android:layout_below="@id/numeric_value_text_view_static" />
+
+            <TextView
+                android:id="@+id/estimated_wait_time_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Estimated Waiting Time:"
+                android:textSize="16sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/numeric_value_text_view"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:id="@+id/estimated_wait_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="N/A"
+                android:textSize="32sp"
+                android:textColor="#FFFFFF"
+                android:gravity="center_horizontal"
+                android:layout_below="@id/estimated_wait_time_static"
+                android:textStyle="bold"
+                android:layout_centerHorizontal="true" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_background">
+
+            <ImageButton
+                android:id="@+id/help_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_help"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Help Button"
+                android:layout_marginStart="1dp" />
+
+            <ImageButton
+                android:id="@+id/credits_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_information"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Credits Button"
+                android:layout_marginEnd="1dp" />
+        </RelativeLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="60dp"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/button_background">
-
-        <ImageButton
-            android:id="@+id/help_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_help"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Help Button"
-            android:layout_marginStart="1dp"/>
-
-        <ImageButton
-            android:id="@+id/credits_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_information"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Credits Button"
-            android:layout_marginEnd="1dp"/>
-    </RelativeLayout>
-
-
-
-</RelativeLayout>
+</ScrollView>
