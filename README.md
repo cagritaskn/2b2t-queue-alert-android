@@ -19,7 +19,7 @@ To get started, first run the server **(PC-Server-2B2TQueueAlert.exe)** on your 
 > Some Android operating systems has a feature called **Battery Optimization** which may hibernate the app after some time. **The 2B2T Queue Alert Android app asks and redirects you to the related settings section but if you couldn't disable it that way or if you get an error trying to do it you should read this.** Be sure to disable battery optimization for this app if exists. Here is instructions of disabling the battery optimization for any app: **[How to disable battery optimization for applications](https://github.com/cagritaskn/2b2t-queue-alert-android/blob/main/DISABLING_BATTERY_OPTIMIZATION.md)**. Some Android phones have this setting in the application page. If you couldn't do it by following this manual then try going into `Settings>Applications>2B2T Queue Alert>Battery` in this window, choose "Not restriced" (or anything with the same meaning).
 
 > [!NOTE]
-> If you have any kind of **Anti-Spam** (Chat spam blocking) feature turned on, it will probably block the chat queue announcer. So If you are using any kind of anti spam feature, **turn it off** in order to make the app work.
+> If you have any kind of **Anti-Spam** (Chat spam blocking) feature turned on, it will probably block the chat queue announcer. So If you have a **cheat client** and using any kind of anti spam feature, **turn it off** in order to make the app work.
 
 # How does it work ?
 The PC application reads data from Minecraft's latest.log file, uploads this data to a local IP address, and allows the Android phone, which is connected to the same network, to access and display this data. The Android phone then sends notifications based on the data received from the PC.
