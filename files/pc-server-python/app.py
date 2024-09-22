@@ -45,7 +45,7 @@ def get_resource_path(relative_path):
 
 def read_last_numeric_line(file_path):
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             lines = file.readlines()
             if lines:
                 last_line = lines[-1].strip()
@@ -67,9 +67,12 @@ def read_last_numeric_line(file_path):
                 
                 return numeric_value, is_restarting
 
-    except Exception as e:
+    except UnicodeDecodeError as e:
         print(f"Error reading file: {e}")
+    except Exception as e:
+        print(f"General error reading file: {e}")
     return "No numeric value found", False
+
 
 @app.route('/get-data', methods=['GET'])
 def get_data():
